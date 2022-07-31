@@ -10,6 +10,6 @@ public class DesktopLauncher {
 		config.setWindowedMode(1280, 720);
 		config.setForegroundFPS(60);
 		config.setTitle("Tanks");
-		new Lwjgl3Application(new MyGdxGame(), config);
+		new Lwjgl3Application(new TanksGame(), config);
 	}
 }

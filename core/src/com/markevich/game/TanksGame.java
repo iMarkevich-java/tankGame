@@ -5,17 +5,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-public class MyGdxGame extends ApplicationAdapter {
+public class TanksGame extends ApplicationAdapter {
 	private SpriteBatch batch;
+	private Map map;
 	private Tank tank;
-	private Bullet bullet;
+	private BulletEmitter bulletEmitter;
 
 
 	@Override
 	public void create() {
 		batch = new SpriteBatch();
+		map = new Map();
 		tank = new Tank(this);
-		bullet = new Bullet();
+		bulletEmitter = new BulletEmitter();
 
 	}
 
@@ -25,18 +27,15 @@ public class MyGdxGame extends ApplicationAdapter {
 		update(dt);
 		ScreenUtils.clear(0, 0.6f, 0, 1);
 		batch.begin();
+		map.render(batch);
 		tank.render(batch);
-		if (bullet.isActive()) {
-			bullet.render(batch);
-		}
+		bulletEmitter.render(batch);
 		batch.end();
 	}
 
 	public void update(float dt) {
 		tank.update(dt);
-		if (bullet.isActive()) {
-			bullet.update(dt);
-		}
+		bulletEmitter.update(dt);
 	}
 
 	@Override
@@ -49,7 +48,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		return tank;
 	}
 
-	public Bullet getBullet() {
-		return bullet;
+	public BulletEmitter getBulletEmitter() {
+		return bulletEmitter;
 	}
 }

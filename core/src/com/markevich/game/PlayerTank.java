@@ -1,4 +1,4 @@
 package com.markevich.game;
 
-public class BulletEmiter {
+public class PlayerTank {
 }
